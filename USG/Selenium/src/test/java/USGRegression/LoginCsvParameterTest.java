@@ -7,6 +7,7 @@ import com.opencsv.CSVReader;
 import USGRegressionObjects.BuildSubmittalObject;
 import USGRegressionObjects.HomePageObjects;
 import Utile.CaptureScreenshot;
+import helper.utils.DriverSetter;
 
 import org.testng.annotations.BeforeMethod;
 
@@ -32,8 +33,7 @@ public class LoginCsvParameterTest {
 	@BeforeMethod
 	public void beforeMethod() {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = DriverSetter.getChromeDriver();
 		wait = new WebDriverWait(driver, 30);
 		driver.manage().window().maximize();
 		driver.get("https://www.usg.com/content/usgcom/en.html");
@@ -67,29 +67,22 @@ public class LoginCsvParameterTest {
 	}
 
 	@DataProvider(name = "loginParams")
-	public Iterator<Object[][]> dp() throws IOException {
-		List<Object[][]> params = new ArrayList();
+	public Object[][] dp() throws IOException {
+		Object[][] params = new Object[][] {};
 		CSVReader csvReader = new CSVReader(new FileReader("./src/test/resources/loginParams.csv"), ',');
 		
 		List<String[]> allLines = csvReader.readAll();
-		Iterator<String[]> allLinesIterator = allLines.iterator();
-		while(allLinesIterator.hasNext()) {
-			String[] lineValues = allLinesIterator.next();
-			params.add(new Object[][] {
-				{lineValues[0],lineValues[1]}
-				
-			});
+		if(!allLines.isEmpty()) {
+			params = new Object[allLines.size()][2];
+			for(int i=0;i<allLines.size();i++) {
+				String[] lineValues = allLines.get(i);
+				params[i][0] = lineValues[0];
+				params[i][1] = lineValues[1];
+			}
 		}
 		
-//		allLines.forEach(values-> params.add(new Object[][] {values[0],values[1]}));
-		
+		return params;
 
-		
-		return params.iterator();
-		/*
-		 * return new Object[][] { { "", "" }
-		 * ,{ "", "" } };
-		 */
 	}
 
 	@Test(priority = 3, description = "Test to validate the Build a Submittal Page is displayed",dataProvider = "loginParams")
