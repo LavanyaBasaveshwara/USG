@@ -73,7 +73,7 @@ public class LoginCsvParameterTest {
 		
 		List<String[]> allLines = csvReader.readAll();
 		List<Object[][]> params = new ArrayList();
-		allLines.forEach(values-> params.add(new Object[][] {values[0],values[1]}));
+//		allLines.forEach(values-> params.add(new Object[][] {values[0],values[1]}));
 		
 
 		
