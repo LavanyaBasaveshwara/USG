@@ -68,11 +68,19 @@ public class LoginCsvParameterTest {
 
 	@DataProvider(name = "loginParams")
 	public Iterator<Object[][]> dp() throws IOException {
-		
+		List<Object[][]> params = new ArrayList();
 		CSVReader csvReader = new CSVReader(new FileReader("./src/test/resources/loginParams.csv"), ',');
 		
 		List<String[]> allLines = csvReader.readAll();
-		List<Object[][]> params = new ArrayList();
+		Iterator<String[]> allLinesIterator = allLines.iterator();
+		while(allLinesIterator.hasNext()) {
+			String[] lineValues = allLinesIterator.next();
+			params.add(new Object[][] {
+				{lineValues[0],lineValues[1]}
+				
+			});
+		}
+		
 //		allLines.forEach(values-> params.add(new Object[][] {values[0],values[1]}));
 		
 
