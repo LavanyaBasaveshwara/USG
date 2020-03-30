@@ -19,8 +19,8 @@ public class BuildSubmittalPage {
 	
 	@BeforeTest
 	public void setup() {
-	System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver.exe");
-	driver = new ChromeDriver();
+	//System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver.exe");
+	driver = DriverSetter.getChromeDriver();
 	wait=new WebDriverWait(driver, 30);
 	driver.manage().window().maximize();
 	driver.get("https://www.usg.com/content/usgcom/en.html");

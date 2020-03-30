@@ -12,6 +12,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import helper.utils.DriverSetter;
+
 import org.testng.Assert;
 
 @Listeners(Listners.listnersClass.class)
@@ -22,8 +25,8 @@ public class ProductComparision {
 	public void setup() {
 //		System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver.exe");
 //		driver = new ChromeDriver();
-		System.setProperty("webdriver.gecko.driver", "D:\\Drivers\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", "D:\\Drivers\\geckodriver.exe");
+		driver = DriverSetter.getFireFoxDriver();
 		driver.manage().window().maximize();
 		
 	}

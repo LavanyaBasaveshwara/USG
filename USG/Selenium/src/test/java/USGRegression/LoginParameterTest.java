@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import USGRegressionObjects.BuildSubmittalObject;
 import USGRegressionObjects.HomePageObjects;
 import Utile.CaptureScreenshot;
+import helper.utils.DriverSetter;
 
 import org.testng.annotations.BeforeMethod;
 import org.openqa.selenium.WebDriver;
@@ -22,8 +23,8 @@ public class LoginParameterTest {
 	@BeforeMethod
 	public void beforeMethod() {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
+		//System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
+		driver = DriverSetter.getChromeDriver();
 		wait = new WebDriverWait(driver, 30);
 		driver.manage().window().maximize();
 		driver.get("https://www.usg.com/content/usgcom/en.html");
