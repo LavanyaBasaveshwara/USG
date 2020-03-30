@@ -23,6 +23,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import helper.utils.LoginIDPassword;
+
 import org.apache.commons.io.FileUtils;
 
 
@@ -135,8 +138,8 @@ public void LoginValidation() throws InterruptedException
 	AccountDropdown.click();
 //	AccountDropdown.selectByVisibleText('Profile').click();
 	driver.findElement(By.xpath("//a[@class='btn login-modal-trigger model-trigger']")).click();
-	driver.findElement(By.xpath("//input[@id='account-form--login__email']")).sendKeys("");
-	driver.findElement(By.xpath("//input[@id='password']")).sendKeys("");
+	driver.findElement(By.xpath("//input[@id='account-form--login__email']")).sendKeys(LoginIDPassword.loginID());
+	driver.findElement(By.xpath("//input[@id='password']")).sendKeys(LoginIDPassword.password());
 	Thread.sleep(3000);
 	driver.findElement(By.id("submitButton")).click();
 	String welcome = driver.findElement(By.xpath("//p[contains(text(),'Welcome back! You are now signed in.')]")).getText();

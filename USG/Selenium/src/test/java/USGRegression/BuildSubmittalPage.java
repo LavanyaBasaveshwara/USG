@@ -1,6 +1,7 @@
 package USGRegression;
 
 import org.openqa.selenium.By;
+import helper.utils.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,8 +32,8 @@ public class BuildSubmittalPage {
 		HomePageObjects.buildSubBtn(driver).click();
 		BuildSubmittalObject.SubmittalDisplay(driver);
 		Thread.sleep(3000);
-		BuildSubmittalObject.PassLoginID(driver).sendKeys("");
-		BuildSubmittalObject.PassPassword(driver).sendKeys("");
+		BuildSubmittalObject.PassLoginID(driver).sendKeys(LoginIDPassword.loginID());
+		BuildSubmittalObject.PassPassword(driver).sendKeys(LoginIDPassword.password());
 		BuildSubmittalObject.LoginClick(driver).click();
 		//BuildSubmittalObject.waitForPageDisplay(wait); 
 		Thread.sleep(5000);

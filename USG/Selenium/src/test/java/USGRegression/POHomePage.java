@@ -18,6 +18,7 @@ import org.testng.ITestResult;
 
 import USGRegressionObjects.*;
 import Utile.CaptureScreenshot;
+import helper.utils.LoginIDPassword;
 
 public class POHomePage {
 	WebDriver driver;
@@ -77,8 +78,8 @@ public class POHomePage {
 		HomePageObjects.buildSubBtn(driver).click();
 		BuildSubmittalObject.SubmittalDisplay(driver);
 		Thread.sleep(3000);
-		BuildSubmittalObject.PassLoginID(driver).sendKeys("");
-		BuildSubmittalObject.PassPassword(driver).sendKeys("");
+		BuildSubmittalObject.PassLoginID(driver).sendKeys(LoginIDPassword.loginID());
+		BuildSubmittalObject.PassPassword(driver).sendKeys(LoginIDPassword.password());
 		BuildSubmittalObject.LoginClick(driver).click();
 		BuildSubmittalObject.waitForPageDisplay(wait); // y am i getting this even though the method is declared
 		Thread.sleep(5000);
